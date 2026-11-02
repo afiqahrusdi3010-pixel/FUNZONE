@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FUNZONE - a colourful collection of mini games, jokes, facts and trivia.">
+  <title>FUNZONE | Play, Laugh & Explore</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="#home"><span class="brand-mark">✦</span> FUN<span>ZONE</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+
+    <nav id="mainNav">
+      <a href="#home">Home</a>
+      <a href="#games">Games</a>
+      <a href="#api-zone">Fun Zone</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <a class="header-play" href="#games">Let's Play <span>→</span></a>
+  </header>
+
+  <main>
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="sparkle">✦</span> YOUR HAPPY PLACE TO PLAY</div>
+        <h1>Less scrolling.<br><span>More playing!</span></h1>
+        <p>Ready for a little fun? Explore mini games, challenge your brain, beat your best score and discover something new.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#games">Explore Games <span>↗</span></a>
+          <a class="text-link" href="#api-zone">Discover the fun zone</a>
+        </div>
+
+        <div class="hero-stats">
+          <div><strong>16</strong><small>Mini games</small></div>
+          <i></i>
+          <div><strong>3</strong><small>Difficulty levels</small></div>
+          <i></i>
+          <div><strong>∞</strong><small>Fun moments</small></div>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-label="Decorative game illustration">
+        <div class="art-orbit orbit-one"></div>
+        <div class="art-orbit orbit-two"></div>
+        <div class="float-sticker sticker-star">✦</div>
+        <div class="float-sticker sticker-heart">♥</div>
+        <div class="gamepad">
+          <div class="pad-cross">✚</div>
+          <div class="pad-buttons"><b></b><b></b></div>
+          <div class="pad-dot"></div>
+        </div>
+        <div class="art-note">GOOD VIBES<br><strong>ONLY!</strong></div>
+        <div class="art-ball">☺</div>
+      </div>
+    </section>
+
+    <section class="ticker">
+      <div>PLAY • LAUGH • REPEAT • PLAY • LAUGH • REPEAT • PLAY • LAUGH • REPEAT •</div>
+    </section>
+
+    <section class="games-section section-wrap" id="games">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">PICK YOUR PLAYGROUND</div>
+          <h2>Choose a <span>game!</span></h2>
+          <p>Sixteen ways to have fun. Which one will you try first?</p>
+        </div>
+        <div class="game-count">
+          <strong id="visibleCount">16</strong>
+          <span>GAMES<br>AVAILABLE</span>
+        </div>
+      </div>
+
+      <div class="game-tools">
+        <label class="search-box">
+          <span>⌕</span>
+          <input type="search" id="gameSearch" placeholder="Find a game...">
+        </label>
+
+        <div class="filter-buttons" id="categoryFilters">
+          <button class="filter active" data-filter="all">All games</button>
+          <button class="filter" data-filter="arcade">Arcade</button>
+          <button class="filter" data-filter="puzzle">Puzzle</button>
+          <button class="filter" data-filter="brain">Brain games</button>
+          <button class="filter" data-filter="challenge">Challenges</button>
+        </div>
+      </div>
+
+      <div class="game-grid" id="gameGrid"></div>
+    </section>
+
+    <section class="api-section" id="api-zone">
+      <div class="section-wrap">
+        <div class="section-heading light-heading">
+          <div>
+            <div class="eyebrow">A LITTLE EXTRA FUN</div>
+            <h2>Explore the <span>Fun Zone!</span></h2>
+            <p>Three API-powered features to make your day a little brighter.</p>
+          </div>
+          <div class="api-spark">✧</div>
+        </div>
+
+        <div class="api-grid">
+          <article class="api-card joke-card">
+            <div class="api-icon">😂</div>
+            <div class="api-label">OFFICIAL JOKE API</div>
+            <h3>Joke Break</h3>
+            <p id="jokeSetup">Need a quick laugh? Get a random joke!</p>
+            <p id="jokePunchline" class="punchline"></p>
+            <div class="api-actions">
+              <button class="btn btn-light" id="jokeButton">Tell me a joke</button>
+              <button class="btn btn-outline-light" id="punchlineButton">Reveal punchline</button>
+            </div>
+            <small id="jokeStatus" class="api-status" aria-live="polite"></small>
+          </article>
+
+          <article class="api-card fact-card">
+            <div class="api-icon">💡</div>
+            <div class="api-label">USELESS FACTS API</div>
+            <h3>Fact Attack</h3>
+            <p id="factText">The world is full of wonderfully random facts. Discover one!</p>
+            <button class="btn btn-light" id="factButton">Surprise me</button>
+            <small id="factStatus" class="api-status" aria-live="polite"></small>
+          </article>
+
+          <article class="api-card trivia-card">
+            <div class="api-icon">🧠</div>
+            <div class="api-label">OPEN TRIVIA DB</div>
+            <h3>Trivia Time</h3>
+            <p id="triviaQuestion">Fancy a quick brain break? Try a trivia question.</p>
+            <div id="triviaAnswers" class="trivia-answers"></div>
+            <button class="btn btn-light" id="triviaButton">Get a question</button>
+            <small id="triviaStatus" class="api-status" aria-live="polite"></small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section section-wrap" id="about">
+      <div class="about-bubble">✿</div>
+      <div>
+        <div class="eyebrow">ABOUT FUNZONE</div>
+        <h2>A tiny corner<br>of <span>big fun.</span></h2>
+      </div>
+      <p>FUNZONE is a playful entertainment website made for everyone who loves quick games, fun challenges, random jokes and interesting facts. Pick a difficulty, play at your own pace and see how high you can score!</p>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="#home"><span class="brand-mark">✦</span> FUN<span>ZONE</span></a>
+    <p>Made for fun, powered by curiosity. © <span id="year"></span> FUNZONE</p>
+    <a href="#home">Back to top ↑</a>
+  </footer>
+
+  <div class="modal-backdrop" id="gameModal" aria-hidden="true">
+    <section class="game-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="closeModal" aria-label="Close game">×</button>
+
+      <div class="modal-top">
+        <div>
+          <div class="eyebrow">LET'S PLAY</div>
+          <h2 id="modalTitle">Game title</h2>
+        </div>
+        <div class="modal-best">BEST SCORE <strong id="bestScore">0</strong></div>
+      </div>
+
+      <div class="difficulty-row">
+        <span>Choose level:</span>
+        <div class="difficulty-buttons">
+          <button data-level="easy" class="level-btn active">Easy</button>
+          <button data-level="medium" class="level-btn">Medium</button>
+          <button data-level="hard" class="level-btn">Hard</button>
+        </div>
+      </div>
+
+      <p class="game-instructions" id="gameInstructions"></p>
+
+      <div class="game-status">
+        <span id="gameMessage">Choose a level and press start!</span>
+        <span>Score: <strong id="currentScore">0</strong></span>
+        <span id="timerDisplay">Time: --</span>
+      </div>
+
+      <div id="gameArea" class="game-area"></div>
+
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="startGame">Start game</button>
+        <button class="btn btn-secondary" id="resetGame">Restart</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
